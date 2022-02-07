@@ -19,6 +19,9 @@ class Liga
     #[ORM\Column(type: 'string', length: 255)]
     private $Division;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $Pais;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +47,18 @@ class Liga
     public function setDivision(string $Division): self
     {
         $this->Division = $Division;
+
+        return $this;
+    }
+
+    public function getPais(): ?string
+    {
+        return $this->Pais;
+    }
+
+    public function setPais(string $Pais): self
+    {
+        $this->Pais = $Pais;
 
         return $this;
     }
