@@ -19,6 +19,12 @@ class EquipoRepository extends ServiceEntityRepository
         parent::__construct($registry, Equipo::class);
     }
 
+    public function findAllOrderedByName()
+    {
+        return $this->createQuery('SELECT e FROM Equipo e ORDER BY e.nombre ASC')->getResult();
+    }
+        
+
     // /**
     //  * @return Equipo[] Returns an array of Equipo objects
     //  */

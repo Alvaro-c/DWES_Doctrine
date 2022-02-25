@@ -1,19 +1,55 @@
+{# 
+    Antes de comenzar, instalar extensión de TWIG en VSCODE
+    En general, la salida de los controladores en Symfony se realiza a través de plantillas, ya sea HTML, XML o cualquier otro formato.
+    Estas plantillas contienen la parte estática de la página y también la lógica de presentación.
+    Pueden recibir argumentos, que son los datos que hay que mostrar
+    Por ejemplo, para mostrar los equipos de la liga se puede utilizar una plantilla que reciba como argumento un array de equipos.
+    La plantilla se encargará de generar las etiquetas correspondientes a la tabla
+
+    TWIG es la librería de plantillas por defecto en symfony  https://twig.symfony.com/
+    
+    Exiten tres tipos de etiquetas en TWIG
+        {{...}} introducen valores de parámetros o expresiones
+        {%...%} introducen lógica o definen secciones. Tienen su apertura y su cierre.
+        {#...#} {#introducen bloques de comentarios
+    
+    Desde los controladores, la salida hacia una plantilla se realiza mediante 
+        return this->render('nombre_de_la_plantilla, array('parámetros a pasar' => 'valores de los parámetros'))
+
+    - Ejemplo de plantilla con etiquetas de expresión
+        saludo.html.twig
+
+    - Ejemplos de plantillas con etiquetas lógicas
+        if.html.twig
+        tabla.html.twig
+
+    - Ejemplos de plantilla con etiquetas de secciones, extension de base.html.twig
+        index.html.twig
+
+ #}
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
+        {% block stylesheets %}{% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
     </body>
 </html>
+
+
+{#
+Ejercicio:
+    Crear las vistas de nuestra base de datos liga:
+    Para ello, crea una cabecera con enlaces a Home, Equipos y Jugadores
+        Al hacer clic en Home, regresamos a la página incial
+        Al hacer clic en esos enlaces hemos de poder acceder a las páginas correspondiente que muestran, respectivamente:
+            1) Todos los Equipos, junto con la liga a la que pertenencen.
+            2) Todos los jugadores, junto con el equipo y liga a la que pertenecen.
+    La pagína inicial, contiene una tabla con los nombres de los las ligas y sus equipos.
+    Cada equipo tiene un enlace que nos redirige a una página para ver sus jugadores.
+#}

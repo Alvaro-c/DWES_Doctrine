@@ -1,0 +1,15 @@
+{# 
+    Accedemos mediante la ruta /plantillas/saludo/{nombre}
+#}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Saludo</title>        
+    </head>
+    <body>
+        {{ include ('/plantillas/cabecera.html.twig') }}
+        Hola, {{ nombre }}
+    </body>
+</html>

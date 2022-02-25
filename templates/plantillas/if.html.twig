@@ -1,0 +1,18 @@
+{# 
+    Accedemos mediante la ruta /plantillas/positivo/{num}
+#}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Saludo</title>        
+    </head>
+    <body>
+        {% if numero > 0 %}
+    		Positivo
+		{% else %}
+	    	Menor o igual que 0
+		{%endif%}
+    </body>
+</html>

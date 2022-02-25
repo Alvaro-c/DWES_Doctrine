@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\JugadorRepository;
+use App\Repository\JugadorBidireccionalRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: JugadorRepository::class)]
-class Jugador
+#[ORM\Entity(repositoryClass: JugadorBidireccionalRepository::class)]
+class JugadorBidireccional
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -22,8 +22,10 @@ class Jugador
     #[ORM\Column(type: 'integer')]
     private $Edad;
 
-    #[ORM\Column(type: 'Equipo')]
-    #[ORM\JoinColumn(name:"equipo_id", referencedColumnName:"id")]
+    /**
+    * @ORM\ManyToOne(targetEntity="EquipoBidireccional", inversedBy = "jugadores")
+    * @ORM\JoinColumn(name="equipo_id", referencedColumnName="id")
+    **/
     private $Equipo;
 
     public function getId(): ?int
